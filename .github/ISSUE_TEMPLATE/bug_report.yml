@@ -1,0 +1,91 @@
+name: Bug report
+description: Reportar um problema encontrado no sistema
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: input
+    id: summary
+    attributes:
+      label: Resumo
+      description: Escreva um título curto para o bug
+      placeholder: Ex.: erro ao fazer login com usuário válido
+    validations:
+      required: true
+
+  - type: dropdown
+    id: module
+    attributes:
+      label: Módulo
+      description: Em qual área o problema aconteceu
+      options:
+        - Front-end
+        - Back-end
+        - Banco de dados
+        - Autenticação
+        - Dashboard
+        - Fotos
+        - Infraestrutura
+    validations:
+      required: true
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severidade
+      description: Qual o impacto do problema
+      options:
+        - Crítica
+        - Alta
+        - Média
+        - Baixa
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Descrição do problema
+      description: Explique claramente o que aconteceu
+      placeholder: Ex.: ao clicar em entrar, o sistema retorna erro 500 mesmo com credenciais válidas
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Passos para reproduzir
+      description: Explique o passo a passo para reproduzir o erro
+      placeholder: |
+        1. Acessar a tela de login
+        2. Informar e-mail e senha válidos
+        3. Clicar em entrar
+        4. Observar o erro
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Comportamento esperado
+      description: O que deveria acontecer
+      placeholder: Ex.: o usuário deveria ser autenticado e redirecionado para o dashboard
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidências
+      description: Logs, prints, mensagens de erro ou detalhes adicionais
+      placeholder: Ex.: stack trace, print da tela, response da API
+    validations:
+      required: false
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Observações
+      description: Qualquer informação complementar
+      placeholder: Ex.: começou a acontecer depois da alteração no endpoint de autenticação
+    validations:
+      required: false

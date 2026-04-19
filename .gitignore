@@ -1,0 +1,7 @@
+Documentação/
+bin/
+obj/
+.vs/
+node_modules/
+.next/
+.env
