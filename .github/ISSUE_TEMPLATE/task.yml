@@ -1,60 +1,60 @@
 name: Task
-description: Criar uma tarefa de desenvolvimento
+description: "Criar uma tarefa de desenvolvimento"
 title: "[Task] "
 labels: ["task"]
 body:
   - type: input
     id: summary
     attributes:
-      label: Resumo
-      description: Escreva um título curto para a task
-      placeholder: Ex.: criar endpoint de cadastro de usuário
+      label: "Resumo"
+      description: "Escreva um título curto para a task"
+      placeholder: "Ex.: criar endpoint de cadastro de usuário"
     validations:
       required: true
 
   - type: dropdown
     id: module
     attributes:
-      label: Módulo
-      description: Escolha a área principal da task
+      label: "Módulo"
+      description: "Escolha a área principal da task"
       options:
-        - Front-end
-        - Back-end
-        - Banco de dados
-        - Autenticação
-        - Dashboard
-        - Fotos
-        - Infraestrutura
-        - Documentação
+        - "Front-end"
+        - "Back-end"
+        - "Banco de dados"
+        - "Autenticação"
+        - "Dashboard"
+        - "Fotos"
+        - "Infraestrutura"
+        - "Documentação"
     validations:
       required: true
 
   - type: dropdown
     id: priority
     attributes:
-      label: Prioridade
-      description: Escolha a prioridade da task
+      label: "Prioridade"
+      description: "Escolha a prioridade da task"
       options:
-        - Alta
-        - Média
-        - Baixa
+        - "Alta"
+        - "Média"
+        - "Baixa"
     validations:
       required: true
 
   - type: textarea
     id: objective
     attributes:
-      label: Objetivo
-      description: Explique o que precisa ser feito
-      placeholder: Ex.: permitir que o usuário crie uma conta informando nome, e-mail e senha
+      label: "Objetivo"
+      description: "Explique o que precisa ser feito"
+      placeholder: "Ex.: permitir que o usuário crie uma conta informando nome, e-mail e senha"
     validations:
       required: true
 
   - type: textarea
     id: steps
     attributes:
-      label: Passos para execução
-      description: Liste o passo a passo da implementação
+      label: "Passos para execução"
+      description: "Liste o passo a passo da implementação"
       placeholder: |
         1. Criar DTO de entrada
         2. Criar endpoint POST
@@ -67,8 +67,8 @@ body:
   - type: textarea
     id: acceptance
     attributes:
-      label: Critérios de aceite
-      description: Como saber que a task está concluída
+      label: "Critérios de aceite"
+      description: "Como saber que a task está concluída"
       placeholder: |
         - Usuário consegue se cadastrar
         - E-mail duplicado é bloqueado
@@ -79,8 +79,8 @@ body:
   - type: textarea
     id: notes
     attributes:
-      label: Observações
-      description: Informações extras, dependências ou dicas
-      placeholder: Ex.: testar primeiro no Postman antes de integrar com o front
+      label: "Observações"
+      description: "Informações extras, dependências ou dicas"
+      placeholder: "Ex.: testar primeiro no Postman antes de integrar com o front"
     validations:
       required: false
