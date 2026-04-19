@@ -19,6 +19,7 @@ body:
       description: "Escolha a área principal da task"
       options:
         - "Front-end"
+        - "Desing and UI/UX"
         - "Back-end"
         - "Banco de dados"
         - "Autenticação"
