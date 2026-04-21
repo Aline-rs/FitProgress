@@ -1,71 +1,71 @@
 name: Epic
-description: Criar um épico para representar uma grande entrega do projeto
+description: "Criar um épico para representar uma grande entrega do projeto"
 title: "[Epic] "
 labels: ["epic"]
 body:
   - type: input
     id: summary
     attributes:
-      label: Resumo
-      description: Escreva um título curto para o épico
-      placeholder: Ex.: estrutura inicial do back-end
+      label: "Resumo"
+      description: "Escreva um título curto para o épico"
+      placeholder: "Ex.: estrutura inicial do back-end"
     validations:
       required: true
 
   - type: dropdown
     id: module
     attributes:
-      label: Módulo
-      description: Escolha a área principal do épico
+      label: "Módulo"
+      description: "Escolha a área principal do épico"
       options:
-        - Planejamento
-        - Front-end
-        - Back-end
-        - Banco de dados
-        - Autenticação
-        - Dashboard
-        - Fotos
-        - Infraestrutura
-        - Deploy
-        - Documentação
+        - "Planejamento"
+        - "Front-end"
+        - "Back-end"
+        - "Banco de dados"
+        - "Autenticação"
+        - "Dashboard"
+        - "Fotos"
+        - "Infraestrutura"
+        - "Deploy"
+        - "Documentação"
     validations:
       required: true
 
   - type: dropdown
     id: priority
     attributes:
-      label: Prioridade
-      description: Escolha a prioridade do épico
+      label: "Prioridade"
+      description: "Escolha a prioridade do épico"
       options:
-        - Alta
-        - Média
-        - Baixa
+        - "Alta"
+        - "Média"
+        - "Baixa"
     validations:
       required: true
 
   - type: textarea
     id: objective
     attributes:
-      label: Objetivo do épico
-      description: Explique qual grande entrega esse épico representa
-      placeholder: Ex.: estruturar a API inicial do sistema com conexão ao banco e arquitetura base
+      label: "Objetivo do épico"
+      description: "Explique qual grande entrega esse épico representa"
+      placeholder: "Ex.: estruturar a API inicial do sistema com conexão ao banco e arquitetura base"
     validations:
       required: true
 
   - type: textarea
     id: expected_result
     attributes:
-      label: Resultado esperado
-      description: Descreva o que deve existir ao final deste épico
-      placeholder: Ex.: API criada, conectada ao banco e pronta para receber as próximas funcionalidades
+      label: "Resultado esperado"
+      description: "Descreva o que deve existir ao final deste épico"
+      placeholder: "Ex.: API criada, conectada ao banco e pronta para receber as próximas funcionalidades"
     validations:
       required: true
 
   - type: textarea
     id: scope
     attributes:
-      label: Escopo
-      description: Liste o que está incluído neste épico
+      label: "Escopo"
+      description: "Liste o que está incluído neste épico"
       placeholder: |
         - Criar projeto base
         - Configurar arquitetura inicial
@@ -77,8 +77,8 @@ body:
   - type: textarea
     id: out_of_scope
     attributes:
-      label: Fora de escopo
-      description: Liste o que não faz parte deste épico
+      label: "Fora de escopo"
+      description: "Liste o que não faz parte deste épico"
       placeholder: |
         - Dashboard
         - Upload de fotos
@@ -89,8 +89,8 @@ body:
   - type: textarea
     id: related_tasks
     attributes:
-      label: Tasks relacionadas
-      description: Liste as tasks que deverão ser criadas a partir deste épico
+      label: "Tasks relacionadas"
+      description: "Liste as tasks que deverão ser criadas a partir deste épico"
       placeholder: |
         - [ ] Criar projeto no Supabase
         - [ ] Configurar connection string
@@ -102,8 +102,8 @@ body:
   - type: textarea
     id: acceptance
     attributes:
-      label: Critérios de conclusão
-      description: Explique quando este épico poderá ser considerado concluído
+      label: "Critérios de conclusão"
+      description: "Explique quando este épico poderá ser considerado concluído"
       placeholder: |
         - [ ] Entrega principal implementada
         - [ ] Tasks relacionadas concluídas
@@ -114,17 +114,17 @@ body:
   - type: textarea
     id: dependencies
     attributes:
-      label: Dependências
-      description: Informe se este épico depende de outro
-      placeholder: Ex.: depende da configuração inicial do repositório
+      label: "Dependências"
+      description: "Informe se este épico depende de outro"
+      placeholder: "Ex.: depende da configuração inicial do repositório"
     validations:
       required: false
 
   - type: textarea
     id: notes
     attributes:
-      label: Observações
-      description: Informações extras que podem ajudar na execução
-      placeholder: Ex.: este épico é base para autenticação e registros físicos
+      label: "Observações"
+      description: "Informações extras que podem ajudar na execução"
+      placeholder: "Ex.: este épico é base para autenticação e registros físicos"
     validations:
       required: false
