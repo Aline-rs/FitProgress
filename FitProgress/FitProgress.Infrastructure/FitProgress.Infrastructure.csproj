@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FitProgress.Application\FitProgress.Application.csproj" />
+    <ProjectReference Include="..\FitProgress.Domain\FitProgress.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
