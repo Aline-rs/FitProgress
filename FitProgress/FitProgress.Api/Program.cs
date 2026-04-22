@@ -1,4 +1,6 @@
 using FitProgress.Infrastructure.Configurations;
+using FitProgress.Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace FitProgress.Api
 {
@@ -11,6 +13,9 @@ namespace FitProgress.Api
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddDbContext<AppDbContext>(options =>
+                options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
             var supabaseSettings = new SupabaseSettings
             {

@@ -8,6 +8,8 @@
         public string PasswordHash { get; set; } = string.Empty;
         public DateTime CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
+        public ICollection<PhysicalRecord> PhysicalRecords { get; set; } = new List<PhysicalRecord>();
+        public ICollection<ProgressPhoto> ProgressPhotos { get; set; } = new List<ProgressPhoto>();
 
     }
 }
