@@ -22,7 +22,9 @@ namespace FitProgress.Infrastructure.Data
             {
                 entity.ToTable("Users");
 
-                entity.HasKey(x => x.Id);
+                entity.Property(x => x.Id)
+                    .ValueGeneratedOnAdd()
+                    .HasDefaultValueSql("gen_random_uuid()");
 
                 entity.Property(x => x.Name)
                     .IsRequired()
@@ -46,9 +48,12 @@ namespace FitProgress.Infrastructure.Data
             {
                 entity.ToTable("PhysicalRecords");
 
-                entity.HasKey(x => x.Id);
+                entity.Property(x => x.Id)
+                    .ValueGeneratedOnAdd()
+                    .HasDefaultValueSql("gen_random_uuid()");
 
                 entity.Property(x => x.RecordDate)
+                    .HasColumnType("date")
                     .IsRequired();
 
                 entity.Property(x => x.Weight)
@@ -67,7 +72,9 @@ namespace FitProgress.Infrastructure.Data
             {
                 entity.ToTable("ProgressPhotos");
 
-                entity.HasKey(x => x.Id);
+                entity.Property(x => x.Id)
+                    .ValueGeneratedOnAdd()
+                    .HasDefaultValueSql("gen_random_uuid()");
 
                 entity.Property(x => x.ImageUrl)
                     .IsRequired();
