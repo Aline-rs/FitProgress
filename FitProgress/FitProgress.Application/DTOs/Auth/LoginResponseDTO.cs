@@ -1,6 +1,6 @@
-﻿namespace FitProgress.Api.DTOs.Auth
+﻿namespace FitProgress.Application.DTOs.Auth
 {
-    public class LoginResponse
+    public class LoginResponseDTO
     {
         public string Token { get; set; } = string.Empty;
         public DateTime ExpiresAt { get; set; }

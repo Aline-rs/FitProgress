@@ -1,4 +1,4 @@
-﻿namespace FitProgress.Api.Settings
+﻿namespace FitProgress.Application.Settings
 {
     public class JwtSettings
     {
