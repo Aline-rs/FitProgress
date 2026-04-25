@@ -1,4 +1,4 @@
-﻿using FitProgress.Api.Settings;
+﻿using FitProgress.Application.Settings;
 using FitProgress.Domain.Entities;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
@@ -6,7 +6,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace FitProgress.Api.Services.Auth
+namespace FitProgress.Application.Services.Auth
 {
     public class TokenService : ITokenService
     {

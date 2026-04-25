@@ -1,5 +1,5 @@
-﻿using FitProgress.Api.DTOs.Auth;
-using FitProgress.Api.Services.Auth;
+﻿using FitProgress.Application.DTOs.Auth;
+using FitProgress.Application.Services.Auth;
 using FitProgress.Domain.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -8,7 +8,7 @@ namespace FitProgress.Api.Controllers
 {
     [ApiController]
     [Route("api/auth")]
-    public class AuthController : ControllerBase 
+    public class AuthController : ControllerBase
     {
 
         private readonly IAuthService _authService;
@@ -20,11 +20,11 @@ namespace FitProgress.Api.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login([FromBody] LoginRequest request)
+        public async Task<IActionResult> Login([FromBody] LoginRequestDTO request)
         {
             var response = await _authService.LoginAsync(request);
 
-            if(response is null)
+            if (response is null)
             {
                 return Unauthorized(new
                 {

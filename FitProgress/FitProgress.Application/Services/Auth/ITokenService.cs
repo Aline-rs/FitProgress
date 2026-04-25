@@ -1,6 +1,6 @@
 ﻿using FitProgress.Domain.Entities;
 
-namespace FitProgress.Api.Services.Auth
+namespace FitProgress.Application.Services.Auth
 {
     public interface ITokenService
     {
