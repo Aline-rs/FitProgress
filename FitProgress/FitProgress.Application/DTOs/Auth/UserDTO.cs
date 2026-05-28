@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace FitProgress.Api.DTO
+namespace FitProgress.Application.DTOs.Auth
 {
     public class UserDTO
     {

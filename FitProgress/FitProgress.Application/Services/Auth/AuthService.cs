@@ -73,5 +73,41 @@ namespace FitProgress.Application.Services.Auth
 
             return ServiceResult<LoginResponseDTO>.Ok(response);
         }
+
+        public async Task<ServiceResult<Guid>> RegisterAsync(UserDTO request)
+        {
+            if (string.IsNullOrWhiteSpace(request.Email) ||
+                string.IsNullOrWhiteSpace(request.Password) ||
+                string.IsNullOrWhiteSpace(request.Name))
+            {
+                return ServiceResult<Guid>.Fail(
+                    "E-mail, senha e nome são obrigatórios.");
+            }
+
+            var existing = await _userRepository.GetByEmailAsync(request.Email);
+
+            if (existing != null)
+            {  
+                
+                return ServiceResult<Guid>.Fail(
+                    "E-mail já cadastrado.");  
+            }
+
+            var user = new User
+            {
+                Id = Guid.NewGuid(),
+                Name = request.Name,
+                Email = request.Email,
+                CreatedAt = DateTime.UtcNow
+            };
+
+            var passwordHasher = new PasswordHasher<User>();
+            
+            user.PasswordHash = passwordHasher.HashPassword(user, request.Password);
+
+            await _userRepository.AddAsync(user);
+
+                return ServiceResult<Guid>.Ok(user.Id);
+        }
     }
 }
