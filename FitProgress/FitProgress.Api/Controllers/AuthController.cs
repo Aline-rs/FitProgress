@@ -52,5 +52,21 @@ namespace FitProgress.Api.Controllers
 
             return Ok(hash);
         }
+
+        [HttpPost("register")] 
+        public async Task<IActionResult> Register([FromBody] UserDTO request)
+
+        {
+
+            var result = await _authService.RegisterAsync(request);
+
+            if (!result.Success)
+
+                return BadRequest(new { message = result.Message });
+                return (Created(string.Empty, new { id = result.Data })); 
+        
+        }
+
+        
     }
 }
