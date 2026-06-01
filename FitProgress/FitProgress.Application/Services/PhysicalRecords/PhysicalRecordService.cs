@@ -2,6 +2,8 @@
 using FitProgress.Application.DTOs.PhysicalRecords;
 using FitProgress.Application.PhysicalRecords.Interfaces;
 using FitProgress.Domain.Entities;
+using Microsoft.AspNetCore.Http.HttpResults;
+using Supabase.Gotrue;
 
 namespace FitProgress.Application.Services.PhysicalRecords
 {
@@ -40,6 +42,21 @@ namespace FitProgress.Application.Services.PhysicalRecords
                 Notes = physicalRecord.Notes,
                 CreatedAt = physicalRecord.CreatedAt
             });
+        }
+
+        public async Task<ServiceResult<IEnumerable<PhysicalRecordResponseDTO>>> ListByUserAsync(Guid userId)
+
+        {
+            var records = await _physicalRecordRepository.GetByUserIdAsync(userId);
+            var response = records.Select(record => new PhysicalRecordResponseDTO
+            {
+                Id = record.Id,
+                RecordDate = record.RecordDate,
+                Weight = record.Weight,
+                Notes = record.Notes,
+                CreatedAt = record.CreatedAt
+            });
+            return ServiceResult<IEnumerable<PhysicalRecordResponseDTO>>.Ok(response);
         }
     }
 }

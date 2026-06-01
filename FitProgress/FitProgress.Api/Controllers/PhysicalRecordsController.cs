@@ -45,5 +45,32 @@ namespace FitProgress.Api.Controllers
 
             return StatusCode(201, response.Data);
         }
+
+        [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> List()
+        {
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            if (!Guid.TryParse(userIdClaim, out var userId))
+            {
+                return Unauthorized(new
+                {
+                    message = "Usuário não autenticado."
+                });
+            }
+
+            var result = await _physicalRecordService.ListByUserAsync(userId);
+
+            if (!result.Success)
+            {
+                return BadRequest(new
+                {
+                    message = result.Message
+                });
+            }
+
+            return Ok(result.Data);
+        }
     }
 }

@@ -5,5 +5,10 @@ namespace FitProgress.Application.PhysicalRecords.Interfaces
     public interface IPhysicalRecordRepository
     {
         Task AddAsync(PhysicalRecord physicalRecord);
+
+
+        Task<IEnumerable<PhysicalRecord>> GetByUserIdAsync(Guid userId);
+
     }
 }
+
