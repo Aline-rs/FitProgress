@@ -47,7 +47,7 @@ namespace FitProgress.Api.Controllers
         }
 
         [Authorize]
-        [HttpGet]
+        [HttpGet("registerlist")]
         public async Task<IActionResult> List()
         {
             var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
