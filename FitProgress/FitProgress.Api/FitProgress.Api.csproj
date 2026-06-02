@@ -22,4 +22,8 @@
     <ProjectReference Include="..\FitProgress.Infrastructure\FitProgress.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="DTO\" />
+  </ItemGroup>
+
 </Project>

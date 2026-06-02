@@ -35,22 +35,15 @@ namespace FitProgress.Api.Controllers
             return Ok(response);
         }
 
-        // TODO: remover endpoint temporário de geração de hash quando a API de registro estiver pronta
-        [HttpGet("generate-password-hash")]
-        public IActionResult GeneratePasswordHash()
+        [HttpPost("register")] 
+        public async Task<IActionResult> Register([FromBody] UserDTO request)
         {
-            var passwordHasher = new PasswordHasher<User>();
+            var result = await _authService.RegisterAsync(request);
 
-            var user = new User
-            {
-                Id = Guid.NewGuid(),
-                Name = "Aline",
-                Email = "aline.rosa@email.com"
-            };
+            if (!result.Success)
 
-            var hash = passwordHasher.HashPassword(user, "123456");
-
-            return Ok(hash);
-        }
+                return BadRequest(new { message = result.Message });
+                return (Created(string.Empty, new { id = result.Data }));         
+        }        
     }
 }
