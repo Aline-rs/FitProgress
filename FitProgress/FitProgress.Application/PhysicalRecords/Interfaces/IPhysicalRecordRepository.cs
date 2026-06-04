@@ -7,6 +7,8 @@ namespace FitProgress.Application.PhysicalRecords.Interfaces
         Task AddAsync(PhysicalRecord physicalRecord);
 
         Task<IEnumerable<PhysicalRecord>> GetByUserIdAsync(Guid userId);
+
+        Task<IEnumerable<PhysicalRecord>> GetByUserIdAsync(Guid userId);
         
         Task<PhysicalRecord?> GetByIdAndUserIdAsync(Guid recordId, Guid userId);
 

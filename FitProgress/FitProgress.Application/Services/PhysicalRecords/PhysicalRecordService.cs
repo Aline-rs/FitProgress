@@ -3,6 +3,7 @@ using FitProgress.Application.DTOs.PhysicalRecords;
 using FitProgress.Application.PhysicalRecords.Interfaces;
 using FitProgress.Domain.Entities;
 using Microsoft.AspNetCore.Http.HttpResults;
+using Supabase.Gotrue;
 
 namespace FitProgress.Application.Services.PhysicalRecords
 {
