@@ -58,5 +58,60 @@ namespace FitProgress.Application.Services.PhysicalRecords
             });
             return ServiceResult<IEnumerable<PhysicalRecordResponseDTO>>.Ok(response);
         }
+
+        public async Task<ServiceResult<PhysicalRecordResponseDTO>> UpdateAsync(
+            Guid userId,
+            Guid recordId,
+            UpdatePhysicalRecordRequestDTO request)
+        
+        {
+            if (request.Weight <= 0)
+            {
+                return ServiceResult<PhysicalRecordResponseDTO>.Fail(
+                        "O peso deve ser maior que zero.");
+            }
+
+            var physicalRecord = await _physicalRecordRepository
+                .GetByIdAndUserIdAsync(recordId, userId);
+           
+            if (physicalRecord == null)
+            {
+                return ServiceResult<PhysicalRecordResponseDTO>.Fail(
+                    "Registro físico não encontrado ou não pertence ao usuário.");
+            }
+
+            physicalRecord.RecordDate = request.RecordDate;
+            physicalRecord.Weight = request.Weight;
+            physicalRecord.Notes = request.Notes;
+
+            await _physicalRecordRepository.UpdateAsync(physicalRecord);
+
+
+            return ServiceResult<PhysicalRecordResponseDTO>.Ok(new PhysicalRecordResponseDTO
+            {
+                Id = physicalRecord.Id,
+                RecordDate = physicalRecord.RecordDate,
+                Weight = physicalRecord.Weight,
+                Notes = physicalRecord.Notes,
+                CreatedAt = physicalRecord.CreatedAt
+            });
+        }
+
+        public async Task<ServiceResult<bool>> DeleteAsync(Guid userId, Guid recordId)
+        {
+
+            var physicalRecord = await _physicalRecordRepository
+                .GetByIdAndUserIdAsync(recordId, userId);
+
+            if (physicalRecord == null)
+            {
+                return ServiceResult<bool>.Fail("Registro físico não encontrado ou não pertence ao usuário.");
+            }
+
+            await _physicalRecordRepository.DeleteAsync(physicalRecord);
+
+            return ServiceResult<bool>.Ok(true);
+
+        }
     }
 }

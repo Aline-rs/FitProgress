@@ -18,7 +18,7 @@ namespace FitProgress.Api.Controllers
         }
         [Authorize]
         [HttpPost("create")]
-        public async Task<IActionResult> CreateRecord(CreatePhysicalRecordRequestDTO request)
+        public async Task<IActionResult> CreatePhysicalRecord(CreatePhysicalRecordRequestDTO request)
         {
 
             var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
@@ -71,6 +71,62 @@ namespace FitProgress.Api.Controllers
             }
 
             return Ok(result.Data);
+        }
+
+        [Authorize]
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdatePhysicalRecords(Guid id, UpdatePhysicalRecordRequestDTO request)
+        {
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            if (!Guid.TryParse(userIdClaim, out var userId))
+            {
+                return Unauthorized(new
+                {
+                    message = "Usuário não autenticado."
+                });
+            }
+            var result = await _physicalRecordService.UpdateAsync(userId, id, request);
+
+            if (!result.Success)
+            {
+                return BadRequest(new
+                {
+                    message = result.Message
+                });
+            }
+
+            return Ok(result.Data);
+        }
+
+        [Authorize]
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeletePhysicalRecords(Guid id)
+        {
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            if (!Guid.TryParse(userIdClaim, out var userId))
+            {
+                return Unauthorized(new
+                {
+                    message = "Usuário não autenticado."
+                });
+            }
+
+            var result = await _physicalRecordService.DeleteAsync(userId, id);
+
+            if (!result.Success)
+            {
+                return BadRequest(new
+                {
+                    message = result.Message
+                });
+            }
+
+            return Ok(new
+            {
+                message = "Registro físico excluído com sucesso."
+            });
         }
     }
 }
