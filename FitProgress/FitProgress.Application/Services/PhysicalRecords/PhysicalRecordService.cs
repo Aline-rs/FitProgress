@@ -40,7 +40,7 @@ namespace FitProgress.Application.Services.PhysicalRecords
                 RecordDate = physicalRecord.RecordDate,
                 Weight = physicalRecord.Weight,
                 Notes = physicalRecord.Notes,
-                CreatedAt = physicalRecord.CreatedAt
+                CreatedAt = physicalRecord.CreatedAt.AddHours(-3) // Ajuste para horário de Brasília (UTC-3)
             });
         }
 
@@ -54,7 +54,7 @@ namespace FitProgress.Application.Services.PhysicalRecords
                 RecordDate = record.RecordDate,
                 Weight = record.Weight,
                 Notes = record.Notes,
-                CreatedAt = record.CreatedAt
+                CreatedAt = record.CreatedAt.AddHours(-3) // Ajuste para horário de Brasília (UTC-3)
             });
             return ServiceResult<IEnumerable<PhysicalRecordResponseDTO>>.Ok(response);
         }
@@ -93,7 +93,7 @@ namespace FitProgress.Application.Services.PhysicalRecords
                 RecordDate = physicalRecord.RecordDate,
                 Weight = physicalRecord.Weight,
                 Notes = physicalRecord.Notes,
-                CreatedAt = physicalRecord.CreatedAt
+                CreatedAt = physicalRecord.CreatedAt.AddHours(-3) // Ajuste para horário de Brasília (UTC-3)
             });
         }
 
