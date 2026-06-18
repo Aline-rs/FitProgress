@@ -1,3 +1,4 @@
+using FitProgress.Application.Photos.Interfaces;
 using FitProgress.Application.PhysicalRecords.Interfaces;
 using FitProgress.Application.Services.Auth;
 using FitProgress.Application.Services.PhysicalRecords;
@@ -5,6 +6,7 @@ using FitProgress.Application.Settings;
 using FitProgress.Application.Users.Interfaces;
 using FitProgress.Infrastructure.Configurations;
 using FitProgress.Infrastructure.Data;
+using FitProgress.Infrastructure.Photos.Services;
 using FitProgress.Infrastructure.Repositories.PhysicalRecords;
 using FitProgress.Infrastructure.Repositories.Users;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -27,6 +29,9 @@ namespace FitProgress.Api
             // Settings
             builder.Services.Configure<JwtSettings>(
                 builder.Configuration.GetSection("Jwt"));
+            builder.Services.Configure<CloudinarySettings>(
+                builder.Configuration.GetSection("CloudinarySettings"));
+            builder.Services.AddScoped<ICloudinaryService, CloudinaryService>();
 
             var jwtSettings = builder.Configuration
                 .GetSection("Jwt")
