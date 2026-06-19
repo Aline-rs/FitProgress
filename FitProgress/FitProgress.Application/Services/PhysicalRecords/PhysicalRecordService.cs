@@ -55,6 +55,7 @@ namespace FitProgress.Application.Services.PhysicalRecords
                 Weight = record.Weight,
                 Notes = record.Notes,
                 CreatedAt = record.CreatedAt
+
             });
             return ServiceResult<IEnumerable<PhysicalRecordResponseDTO>>.Ok(response);
         }
