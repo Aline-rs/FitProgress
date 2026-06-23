@@ -1,4 +1,5 @@
 using FitProgress.Application.Photos.Interfaces;
+using FitProgress.Application.Photos.Services;
 using FitProgress.Application.PhysicalRecords.Interfaces;
 using FitProgress.Application.Services.Auth;
 using FitProgress.Application.Services.PhysicalRecords;
@@ -8,6 +9,7 @@ using FitProgress.Infrastructure.Configurations;
 using FitProgress.Infrastructure.Data;
 using FitProgress.Infrastructure.Photos.Services;
 using FitProgress.Infrastructure.Repositories.PhysicalRecords;
+using FitProgress.Infrastructure.Repositories.ProgressPhotos;
 using FitProgress.Infrastructure.Repositories.Users;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -69,6 +71,10 @@ namespace FitProgress.Api
                 });
 
             builder.Services.AddAuthorization();
+
+            //Photos
+            builder.Services.AddScoped<IPhotoService, PhotoService>();
+            builder.Services.AddScoped<IProgressPhotoRepository, ProgressPhotoRepository>();
 
             // Swagger
             builder.Services.AddEndpointsApiExplorer();
