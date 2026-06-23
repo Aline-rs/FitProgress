@@ -20,7 +20,7 @@ namespace FitProgress.Api.Controllers
 
         [HttpPost("upload")]
         [Consumes("multipart/form-data")]
-        public async Task<IActionResult> Upload([FromForm] UploadPhotoRequestDTO request)
+        public async Task<IActionResult> UploadPhoto([FromForm] UploadPhotoRequestDTO request)
         {
             var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
